@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createStore } from 'redux'
-import scoreReducer from './reducers/scoreReducer'
+import {createStore,combineReducers} from 'redux'
+import { scoreReducer, teamReducer} from './reducers/scoreReducer'
 
-const store = createStore(scoreReducer)
+const reducer = combineReducers({
+    team: teamReducer,
+    score: scoreReducer
+})
+
+const store = createStore(reducer)
 
 const renderApp = () => {
     ReactDOM.render(<App store={store} />, document.getElementById('root'));

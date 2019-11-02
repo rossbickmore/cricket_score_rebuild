@@ -1,21 +1,58 @@
-const scoreReducer = (state = 0, action) => {
+export const scoreReducer = (state = [{ name: 'home', score: 0 }, { name: 'away', score: 0 }], action) => {
+  const team = state.find(((t) => t.name === action.name));
   switch (action.type) {
     case 'one':
-      return state + 1;
+      const newScore = { ...team, score: team.score + 1 };
+      return state.map(team =>
+        team.name !== action.name ? team : newScore
+      )
     case 'two':
-      return state + 2;
+            const newScore = { ...team, score: team.score + 2 };
+            return state.map(team =>
+              team.name !== action.name ? team : newScore
+            )
     case 'three':
-      return state + 2;
-    case 'three':
-      return state + 3;
+            const newScore = { ...team, score: team.score + 3 };
+            return state.map(team =>
+              team.name !== action.name ? team : newScore
+            )
     case 'four':
-      return state + 4;
+            const newScore = { ...team, score: team.score + 4 };
+            return state.map(team =>
+              team.name !== action.name ? team : newScore
+            )
     case 'five':
-      return state + 5;
+            const newScore = { ...team, score: team.score + 5 };
+            return state.map(team =>
+              team.name !== action.name ? team : newScore
+            )
     case 'six':
-      return state + 6;
+            const newScore = { ...team, score: team.score + 6 };
+            return state.map(team =>
+              team.name !== action.name ? team : newScore
+            )
     default: // if none of the above matches, code comes here
       return state;
   }
 };
-export default scoreReducer
+
+export const teamReducer = (state = 'home', action) => {
+  switch (action.type) {
+    case 'home':
+      return state = 'home';
+    case 'away':
+      return state = 'away';
+    default: // if none of the above matches, code comes here
+      return state;
+  }
+};
+
+
+export const updateScore = (score, name) => ({
+  type: score,
+  name,
+});
+
+export const updateTeam = (team) => ({
+  type: team,
+});
