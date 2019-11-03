@@ -5,17 +5,26 @@ function Panel({ store }) {
   const state = store.getState();
   const team = state.teamBatting;
 
+  const onTeamChange = (action) => {
+    alert('You have changed the team to ' + action)
+    store.dispatch(updateTeam(action))
+  }
+
+  const onScoreChange = (action, team) => {
+    store.dispatch(updateScore(action, team))
+  }
+
   return (
     <div>
-      <button onClick={(e) => store.dispatch(updateTeam("home"))}>Home</button>
-      <button onClick={(e) => store.dispatch(updateTeam("away"))}>Away</button>
-      <button onClick={(e) => store.dispatch(updateScore('one', team))}>1</button>
-      <button onClick={(e) => store.dispatch(updateScore('two', team))}>2</button>
-      <button onClick={(e) => store.dispatch(updateScore('three', team))}>3</button>
-      <button onClick={(e) => store.dispatch(updateScore('four', team))}>4</button>
-      <button onClick={(e) => store.dispatch(updateScore('five', team))}>5</button>
-      <button onClick={(e) => store.dispatch(updateScore('six', team))}>6</button>
-      <button onClick={(e) => store.dispatch(updateScore('wicket', team))}>Wicket</button>
+      <button onClick={() => onTeamChange("home")}>Home</button>
+      <button onClick={() => onTeamChange("away")}>Away</button>
+      <button onClick={() => onScoreChange("one", team)}>1</button>
+      <button onClick={() => onScoreChange("two", team)}>2</button>
+      <button onClick={() => onScoreChange("three", team)}>3</button>
+      <button onClick={() => onScoreChange("four", team)}>4</button>
+      <button onClick={() => onScoreChange("five", team)}>5</button>
+      <button onClick={() => onScoreChange("six", team)}>6</button>
+      <button onClick={() => onScoreChange("wicket", team)}>Wicket</button>
     </div>
   );
  }
