@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {createStore,combineReducers} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import { scoreReducer, teamReducer} from './reducers/scoreReducer'
 
 const reducer = combineReducers({
-    team: teamReducer,
-    score: scoreReducer
+    teamBatting: teamReducer,
+    teamScores: scoreReducer,
 })
 
 const store = createStore(reducer)

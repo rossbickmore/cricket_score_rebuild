@@ -4,12 +4,13 @@ import Panel from './components/Panel'
 
 function App({store}) {
   const state = store.getState()
-
+  const home = state.teamScores.find( (t) => t.name === "home")
+  const away = state.teamScores.find( (t) => t.name === "away")
   return (
     <div className="App">
-      <ScoreBoard team="home" score={state.score.home} />
-      <ScoreBoard team="away" score={state.score.away} />
-      <Panel store={store}/>
+      <ScoreBoard team={home} />
+      <ScoreBoard team={away} />
+      <Panel store={store} />
     </div>
   );
 }

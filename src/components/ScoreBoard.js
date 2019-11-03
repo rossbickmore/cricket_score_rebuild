@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ScoreBoard({team , score}) {
+function ScoreBoard({team}) {
     return (
         <div>
-         Score {team} {score}
+         Score {team.name} {team.score} - {team.wickets}
         </div>
     );
 }

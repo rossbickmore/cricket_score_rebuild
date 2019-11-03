@@ -1,36 +1,28 @@
-export const scoreReducer = (state = [{ name: 'home', score: 0 }, { name: 'away', score: 0 }], action) => {
-  const team = state.find(((t) => t.name === action.name));
+export const scoreReducer = (state = [{ name: 'home', score: 0, wickets: 0 }, { name: 'away', score: 0, wickets: 0 }], action) => {
+  const teamToChange = state.find((t) => t.name === action.name);
+
   switch (action.type) {
     case 'one':
-      const newScore = { ...team, score: team.score + 1 };
-      return state.map(team =>
-        team.name !== action.name ? team : newScore
-      )
+      const updatedTeamOne = { ...teamToChange, score: teamToChange.score + 1 };
+      return state.map((t) => (t.name !== action.name ? t : updatedTeamOne));
     case 'two':
-            const newScore = { ...team, score: team.score + 2 };
-            return state.map(team =>
-              team.name !== action.name ? team : newScore
-            )
+      const updatedTeamTwo = { ...teamToChange, score: teamToChange.score + 2 };
+      return state.map((t) => (t.name !== action.name ? t : updatedTeamTwo));
     case 'three':
-            const newScore = { ...team, score: team.score + 3 };
-            return state.map(team =>
-              team.name !== action.name ? team : newScore
-            )
+      const updatedTeamThree = { ...teamToChange, score: teamToChange.score + 3 };
+      return state.map((t) => (t.name !== action.name ? t : updatedTeamThree));
     case 'four':
-            const newScore = { ...team, score: team.score + 4 };
-            return state.map(team =>
-              team.name !== action.name ? team : newScore
-            )
+      const updatedTeamFour = { ...teamToChange, score: teamToChange.score + 4 };
+      return state.map((t) => (t.name !== action.name ? t : updatedTeamFour));
     case 'five':
-            const newScore = { ...team, score: team.score + 5 };
-            return state.map(team =>
-              team.name !== action.name ? team : newScore
-            )
+      const updatedTeamFive = { ...teamToChange, score: teamToChange.score + 5 };
+      return state.map((t) => (t.name !== action.name ? t : updatedTeamFive));
     case 'six':
-            const newScore = { ...team, score: team.score + 6 };
-            return state.map(team =>
-              team.name !== action.name ? team : newScore
-            )
+      const updatedTeamSix = { ...teamToChange, score: teamToChange.score + 6 };
+      return state.map((t) => (t.name !== action.name ? t : updatedTeamSix));
+    case 'wicket':
+        const updatedTeamWicket= { ...teamToChange, wickets: teamToChange.wickets + 1 };
+        return state.map((t) => (t.name !== action.name ? t : updatedTeamWicket));
     default: // if none of the above matches, code comes here
       return state;
   }
@@ -48,8 +40,8 @@ export const teamReducer = (state = 'home', action) => {
 };
 
 
-export const updateScore = (score, name) => ({
-  type: score,
+export const updateScore = (type, name) => ({
+  type,
   name,
 });
 
