@@ -2,6 +2,9 @@ import React from 'react';
 import { updateScore, updateTeam } from '../reducers/scoreReducer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 function Panel({ store }) {
   const state = store.getState();
@@ -14,6 +17,7 @@ function Panel({ store }) {
   }
 
   const onScoreChange = (action, team) => {
+    if (action == "wicket") return toast(action + ' unlucky' + team + ' team')
     toast(action + ' runs! good going ' + team + ' team')
     store.dispatch(updateScore(action, team))
   }
@@ -21,15 +25,36 @@ function Panel({ store }) {
   return (
     <div>
       <ToastContainer autoClose={2000}/>
-      <button onClick={() => onTeamChange("home")}>Home</button>
-      <button onClick={() => onTeamChange("away")}>Away</button>
-      <button onClick={() => onScoreChange("one", team)}>1</button>
-      <button onClick={() => onScoreChange("two", team)}>2</button>
-      <button onClick={() => onScoreChange("three", team)}>3</button>
-      <button onClick={() => onScoreChange("four", team)}>4</button>
-      <button onClick={() => onScoreChange("five", team)}>5</button>
-      <button onClick={() => onScoreChange("six", team)}>6</button>
-      <button onClick={() => onScoreChange("wicket", team)}>Wicket</button>
+      <ButtonToolbar
+        className="justify-content-center m-2"
+        aria-label="Toolbar with Button groups"
+      >
+        <ButtonGroup size="lg">
+          <Button variant="dark" onClick={() => onTeamChange("home")}>Home</Button>
+          <Button variant="light" onClick={() => onTeamChange("away")}>Away</Button>
+        </ButtonGroup>
+      </ButtonToolbar>
+      <ButtonToolbar
+        className="justify-content-center m-2"
+        aria-label="Toolbar with Button groups"
+      >
+      <ButtonGroup size="lg" className="justify-content-space-between">
+        <Button variant="success" onClick={() => onScoreChange("one", team)}>1</Button>
+        <Button variant="success" onClick={() => onScoreChange("two", team)}>2</Button>
+        <Button variant="success" onClick={() => onScoreChange("three", team)}>3</Button>
+        <Button variant="success" onClick={() => onScoreChange("four", team)}>4</Button>
+        <Button variant="success" onClick={() => onScoreChange("five", team)}>5</Button>
+        <Button variant="success" onClick={() => onScoreChange("six", team)}>6</Button>
+      </ButtonGroup>
+      </ButtonToolbar>
+      <ButtonToolbar
+        className="justify-content-center m-2"
+        aria-label="Toolbar with Button groups"
+      >
+      <ButtonGroup size="lg">
+        <Button variant="danger" onClick={() => onScoreChange("wicket", team)}>Wicket</Button>
+      </ButtonGroup>
+      </ButtonToolbar>
     </div>
   );
  }

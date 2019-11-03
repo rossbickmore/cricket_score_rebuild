@@ -1,12 +1,12 @@
-export const scoreReducer = (state = [{
- name: 'home', score: 0, wickets: 0, balls: 0 
-},
+export const scoreReducer = (state = [
   {
- name: 'away', score: 0, wickets: 0, balls: 0 
-}],
-action) => {
+  name: 'home', score: 0, wickets: 0, balls: 0
+  },
+  {
+  name: 'away', score: 0, wickets: 0, balls: 0
+  }],
+  action) => {
   const teamToChange = state.find((t) => t.name === action.name);
-
   switch (action.type) {
     case 'one':
       const updatedTeamOne = { ...teamToChange, score: teamToChange.score + 1, balls: teamToChange.balls + 1 };
@@ -54,8 +54,9 @@ export const oversReducer = (state = 50, action) => {
     case '30':
       return state = 30;
     case '40':
-      return state = 20;
+      return state = 40;
     case '50':
+      return state = 50;
     default: // if none of the above matches, code comes here
       return state;
   }

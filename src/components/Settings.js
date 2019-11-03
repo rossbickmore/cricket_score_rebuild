@@ -4,7 +4,7 @@ import { updateOvers } from '../reducers/scoreReducer';
 function Settings({ store }) {
   const state = store.getState()
   return (
-    <div>
+    <div className="text-center">
        Length of game:
       <select name="overs" value={state.overs} onChange={(event) => store.dispatch(updateOvers(event.target.value))}>
          <option value="10">10</option>
