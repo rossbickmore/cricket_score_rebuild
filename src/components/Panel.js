@@ -17,9 +17,12 @@ function Panel({ store }) {
   }
 
   const onScoreChange = (action, team) => {
-    if (action == "wicket") return toast(action + ' unlucky' + team + ' team')
-    toast(action + ' runs! good going ' + team + ' team')
     store.dispatch(updateScore(action, team))
+    if (action == "wicket") {
+      toast(action + ' unlucky' + team + ' team')
+    } else {
+      toast(action + ' runs! good going ' + team + ' team')
+    }
   }
 
   return (
