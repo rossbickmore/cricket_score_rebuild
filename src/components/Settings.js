@@ -1,5 +1,5 @@
 import React from 'react';
-import { updateOvers } from '../reducers/scoreReducer';
+import { updateOvers } from '../actions/actions';
 
 function Settings({ store }) {
   const state = store.getState()

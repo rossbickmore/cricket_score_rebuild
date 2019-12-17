@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {createStore, combineReducers} from 'redux'
-import { scoreReducer, teamReducer, oversReducer} from './reducers/scoreReducer'
+import { scoreReducer, teamReducer, oversReducer} from './reducers/reducers'
 
 const reducer = combineReducers({
     teamBatting: teamReducer,

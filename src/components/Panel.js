@@ -1,5 +1,5 @@
 import React from 'react';
-import { updateScore, updateTeam } from '../reducers/scoreReducer';
+import { updateScore, updateTeam } from '../actions/actions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'react-bootstrap/Button';
